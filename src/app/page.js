@@ -14,7 +14,7 @@ export default function Home() {
     "céu limpo": "/sunny.png",
     "nuvens quebradas": "/break-cloud.png",
     "nuvens dispersas": "/break-cloud.png",
-    "chuva fraca": "/images/short-rain.png",
+    "chuva fraca": "/short-rain.png",
     "céu pouco nublado": "/cloudy.png",
     "neve fraca": "/snow.png",
     nublado: "/cloudy.png",
