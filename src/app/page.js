@@ -18,6 +18,7 @@ export default function Home() {
     "céu pouco nublado": "/cloudy.png",
     "neve fraca": "/snow.png",
     nublado: "/cloudy.png",
+    trovoada: "/lightning.png",
   }
 
   useEffect(() => {
