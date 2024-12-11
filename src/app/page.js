@@ -100,7 +100,7 @@ export default function Home() {
   return (
     <ThemeProvider>
       <main className="flex flex-col justify-center align-center text-center item-center p-4 gap-4 transition-colors duration-500 ease-in-out">
-        <nav className="flex justify-around items-center my-10">
+        <nav className="flex justify-around items-center my-6">
           <h1 className="text-2xl font-bold">Weather App</h1>
           <ModeToggle /> {/* Replace the button with the ModeToggle component */}
         </nav>
