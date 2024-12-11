@@ -2,12 +2,46 @@
 
 import React, { useState, useEffect } from "react"
 import { Input } from "@/components/ui/input"
-import { ThemeProvider } from "@/components/ui/theme-provider"
 import { Button } from "@/components/ui/button"
 import { useTheme } from "next-themes"
+import { ThemeProvider } from "@/components/ui/theme-provider"
+import { Moon, Sun } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 import { getWeather } from "@/lib/weather"
 import { getGeo } from "@/lib/geo"
+
+export function ModeToggle() {
+  const { setTheme } = useTheme()
+
+  return (
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  )
+}
 
 export default function Home() {
   const [city, setCity] = useState("São Paulo")
@@ -65,14 +99,19 @@ export default function Home() {
 
   return (
     <ThemeProvider>
-      <main className="flex flex-col justify-center align-center text-center item-center p-4 gap-4">
+      <main className="flex flex-col justify-center align-center text-center item-center p-4 gap-4 transition-colors duration-500 ease-in-out">
         <nav className="flex justify-around items-center my-10">
           <h1 className="text-2xl font-bold">Weather App</h1>
-          <Button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>Toggle Theme</Button>
+          <ModeToggle /> {/* Replace the button with the ModeToggle component */}
         </nav>
-        <div className="mx-2 p-4 border border-zinc-400 rounded-lg shadow-lg shadow-zinc-400">
+        <div className="mx-2 p-4 border border-zinc-400 rounded-lg shadow-md shadow-zinc-400 transition-all duration-500 ease-in-out">
           <span className="absolute top-custom left-16 flex items-center pointer-events-none">
-            <img src="/search.png" alt="Lupa" className="w-4 h-4" />
+            {/* Aplique a cor da lupa com base no tema */}
+            <img
+              src="/search.png"
+              alt="Lupa"
+              className="w-4 h-4 filter dark:invert"
+            />
           </span>
           <Input
             type="text"
@@ -104,6 +143,7 @@ export default function Home() {
                     alt="Imagem do clima"
                     width={100}
                     height={100}
+                    className="filter dark:invert"
                   />
                 </div>
                 {/* Temperature */}
@@ -115,15 +155,33 @@ export default function Home() {
                 {/* Maximum, minimum temperatures and humidity */}
                 <div className="flex gap-14">
                   <div className="flex flex-col items-center gap-2 text-sm text-zinc-600">
-                    <img src="/max.png" alt="Temperatura maxima" width={30} height={30} />
+                    <img
+                      src="/max.png"
+                      alt="Temperatura maxima"
+                      width={30}
+                      height={30}
+                      className="filter dark:invert"
+                    />
                     {Math.round(weather.main.temp_max)}°C
                   </div>
                   <div className="flex flex-col items-center gap-2 text-sm text-zinc-600">
-                    <img src="/min.png" alt="Temperatura minima" width={30} height={30} />
+                    <img
+                      src="/min.png"
+                      alt="Temperatura minima"
+                      width={30}
+                      height={30}
+                      className="filter dark:invert"
+                    />
                     {Math.round(weather.main.temp_min)}°C
                   </div>
                   <div className="flex flex-col items-center gap-2 text-sm text-zinc-600">
-                    <img src="humidity.png" alt="Umidade" width={30} height={30} />
+                    <img
+                      src="humidity.png"
+                      alt="Umidade"
+                      width={30}
+                      height={30}
+                      className="filter dark:invert"
+                    />
                     {weather.main.humidity}%
                   </div>
                 </div>
