@@ -70,3 +70,7 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+.top-custom {
+  top: 12.15rem;
+}
