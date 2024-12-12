@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@media (min-width: 768px) {
+  nav {
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgb(212 212 216);
+  }
+  .box-container {
+    padding: 0 1.7rem 0 1.7rem;
+    margin: 2rem auto;
+  }
+  .search-img {
+    top: 3rem;
+    left: 1rem;
+  }
+}
+
+@media (min-width: 1750px) {
+  .box-container {
+    padding: 0 1.7rem 0 1.7rem;
+    margin: 5rem auto;
+  }
+}
