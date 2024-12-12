@@ -46,6 +46,8 @@ export default function Home() {
     "nuvens quebradas": "/break-cloud.png",
     "nuvens dispersas": "/break-cloud.png",
     "chuva fraca": "/short-rain.png",
+    "chuva moderada": "/short-rain.png",
+    "chuva forte": "/short-rain.png",
     "céu pouco nublado": "/cloudy.png",
     "neve fraca": "/snow.png",
     nublado: "/cloudy.png",
@@ -104,7 +106,7 @@ export default function Home() {
               type="text"
               value={city}
               onChange={e => setCity(e.target.value)}
-              className="mt-4 pb-6 pl-14 pt-6 border border-zinc-400"
+              className="mt-4 pb-6 pl-14 pt-6 border top border-zinc-200 shadow-md shadow-zinc-300"
               placeholder="Digite uma cidade"
             />
           </div>
